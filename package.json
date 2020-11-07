@@ -32,6 +32,7 @@
   "scripts": {
     "build": "del-cli dist && tsc",
     "prepack": "npm run build",
+    "build:watch": "tsc -w",
     "start": "ts-node examples/example-bot.ts",
     "test": "tsc --sourceMap && xo && nyc ava"
   },
