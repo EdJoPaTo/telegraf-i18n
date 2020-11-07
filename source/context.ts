@@ -64,7 +64,17 @@ export class I18nContext {
       }
     }
 
-    return template(data)
+    let output = ''
+    try {
+      output = template(data)
+    } catch (err: any) {
+      if (!this.config.hideErrors) {
+        throw new Error(err)
+      } else {
+        output = resourceKey
+      }
+    }
+    return output
   }
 }
 
