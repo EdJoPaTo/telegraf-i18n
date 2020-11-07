@@ -67,13 +67,15 @@ export class I18nContext {
     let output = ''
     try {
       output = template(data)
-    } catch (err: any) {
-      if (!this.config.hideErrors) {
-        throw new Error(err)
-      } else {
+    // eslint-disable-next-line @typescript-eslint/no-implicit-any-catch
+    } catch (error: any) {
+      if (this.config.hideErrors) {
         output = resourceKey
+      } else {
+        throw new Error(error)
       }
     }
+
     return output
   }
 }
